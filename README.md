@@ -145,3 +145,9 @@ This project is for educational purposes. News content is sourced from public RS
 ## 🔊 Audio Playback
 
 ![Audio](Screenshots/Audio%20Selection.png)
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
+![Flask](https://img.shields.io/badge/Flask-Web%20App-black?logo=flask)
+![Sarvam AI](https://img.shields.io/badge/Sarvam-AI-orange)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript)
+![HTML5](https://img.shields.io/badge/HTML-5-orange?logo=html5)
+![CSS3](https://img.shields.io/badge/CSS-3-blue?logo=css3)
