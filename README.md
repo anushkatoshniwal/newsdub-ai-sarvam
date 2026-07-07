@@ -126,3 +126,22 @@ These languages work with both Sarvam Translation (`mayura:v1`) and TTS (`bulbul
 ## License
 
 This project is for educational purposes. News content is sourced from public RSS feeds. Sarvam AI usage is subject to [Sarvam's terms](https://sarvam.ai).
+---
+
+# 📸 Screenshots
+
+## 🏠 Home Page
+
+![Home Page](Screenshots/Home%20Page.png)
+
+---
+
+## 🌐 Translation Output
+
+![Translation](Screenshots/Translated%20Text%20and%20Speech.png)
+
+---
+
+## 🔊 Audio Playback
+
+![Audio](Screenshots/Audio%20Selection.png)
