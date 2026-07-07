@@ -121,5 +121,5 @@ def api_languages():
 if __name__ == "__main__":
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
     debug = os.getenv("FLASK_DEBUG", "false").lower() in {"1", "true", "yes"}
-    port = int(os.getenv("FLASK_PORT", "5000"))
+    port = int(os.environ.get("PORT", 5000))
     app.run(debug=debug, host="0.0.0.0", port=port)
