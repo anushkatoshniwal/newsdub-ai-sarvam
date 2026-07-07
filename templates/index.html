@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsDub AI — News in Your Language</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="header__brand">
+                <span class="header__logo" aria-hidden="true">📰</span>
+                <div>
+                    <h1 class="header__title">NewsDub AI</h1>
+                    <p class="header__tagline">Read and hear the latest news in Indian languages</p>
+                </div>
+            </div>
+            <p class="header__source">Powered by Sarvam AI · Headlines from BBC RSS</p>
+        </header>
+
+        <main class="layout">
+            <!-- Step 1: Headlines -->
+            <section class="panel" aria-labelledby="headlines-heading">
+                <div class="panel__header">
+                    <h2 id="headlines-heading" class="panel__title">Latest Headlines</h2>
+                    <button type="button" id="refresh-btn" class="btn btn--ghost btn--small">
+                        Refresh
+                    </button>
+                </div>
+
+                <div id="headlines-loading" class="state state--loading" hidden>
+                    <span>📰 Fetching today's headlines...</span>
+                </div>
+
+                <div id="headlines-error" class="state state--error" role="alert" hidden></div>
+
+                <ul id="headlines-list" class="headlines-list" aria-label="News headlines"></ul>
+            </section>
+
+            <!-- Step 2: Selected article -->
+            <section class="panel" aria-labelledby="article-heading">
+                <h2 id="article-heading" class="panel__title">Selected Headline</h2>
+
+                <div id="article-empty" class="state state--empty">
+                    <p>Select a headline from the list to see its summary.</p>
+                </div>
+
+                <article id="article-content" class="article" hidden>
+                    <h3 id="article-title" class="article__title"></h3>
+                    <p id="article-summary" class="article__summary"></p>
+                    <a id="article-link" class="article__link" href="#" target="_blank" rel="noopener noreferrer">
+                        Read full story ↗
+                    </a>
+                </article>
+            </section>
+
+            <!-- Step 3: Translate & Listen -->
+            <section class="panel panel--accent" aria-labelledby="dub-heading">
+                <h2 id="dub-heading" class="panel__title">Translate &amp; Listen</h2>
+
+                <form id="dub-form" class="dub-form">
+                    <label for="language-select" class="form-label">Choose an Indian language</label>
+                    <select id="language-select" class="form-select" required>
+                        <option value="" disabled selected>Select a language…</option>
+                        {% for lang in languages %}
+                        <option value="{{ lang.code }}">{{ lang.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <button type="submit" id="dub-btn" class="btn btn--primary" disabled>
+                        Translate &amp; Generate Audio
+                    </button>
+                </form>
+
+                <div id="dub-loading" class="state state--loading" hidden>
+                    <span id="dub-loading-text">
+                        Translating & generating audio... (10–30 sec)
+                    </span>
+                </div>
+
+                <div id="dub-error" class="state state--error" role="alert" hidden></div>
+
+                <div id="dub-result" class="dub-result" hidden>
+                    <h3 class="dub-result__label">Translated text</h3>
+                    <p id="translated-text" class="dub-result__text" lang="hi"></p>
+
+                    <div class="audio-player">
+                        <audio id="audio-player" controls preload="metadata">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <a id="download-link" class="btn btn--secondary" download>
+                            Download Audio
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>NewsDub AI · Built with Flask &amp; Sarvam AI</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
